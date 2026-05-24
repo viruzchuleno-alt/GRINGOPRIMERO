@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northern Pacific Specialty Construction — Alaska Roofing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #06111f;
+      --navy-mid:    #0d1e33;
+      --navy-light:  #142840;
+      --steel:       #1b3a5c;
+      --steel-light: #2a527d;
+      --amber:       #e8920a;
+      --amber-light: #f5a623;
+      --amber-pale:  #fbbf56;
+      --white:       #ffffff;
+      --off-white:   #e8edf2;
+      --muted:       #6b8299;
+      --border:      rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 3px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 0 60px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(6,17,31,0.92) 0%, rgba(6,17,31,0.4) 100%);
+      transition: background 0.5s, border-bottom 0.5s, backdrop-filter 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(6, 17, 31, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+.nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-brand-top {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.14em;
+      color: var(--white);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .nav-brand-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--amber-light); }
+    .nav-cta {
+      background: var(--amber);
+      color: var(--navy) !important;
+      padding: 9px 22px !important;
+      border-radius: 3px;
+      font-weight: 700 !important;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--amber-light) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(27,58,92,0.35) 0%, transparent 70%),
+        linear-gradient(165deg, var(--navy-mid) 0%, var(--navy) 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 30%, transparent 80%);
+    }
+    .hero-roof-line {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 180px;
+      overflow: hidden;
+    }
+    .hero-roof-line svg {
+      width: 100%;
+      height: 100%;
+    }
+    .hero-accent-line {
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--amber), transparent);
+      opacity: 0.4;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 2px;
+      background: var(--amber);
+    }
+    .hero-eyebrow span {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      font-weight: 600;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+    .hero-title .accent { color: var(--amber); }
+    .hero-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--off-white);
+      opacity: 0.75;
+      max-width: 520px;
+      margin-bottom: 48px;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 1.1s forwards;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+      padding: 16px 36px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .btn-ghost {
+      color: var(--off-white);
+      padding: 16px 36px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber-light); }
+    .hero-phone-badge {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right;
+      opacity: 0;
+      animation: fadeLeft 1s 1.3s forwards;
+    }
+    .hero-phone-badge .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .hero-phone-badge .number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--amber-light);
+    }
+    .hero-phone-badge .number a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .hero-phone-badge .number a:hover { color: var(--white); }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 1.6s forwards;
+    }
+    .hero-scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 11px;
+      position: relative;
+    }
+    .scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 7px;
+      background: var(--amber);
+      border-radius: 2px;
+      animation: scrollDot 1.8s infinite;
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 60px;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: var(--border);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--amber);
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 110px 60px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .section-eyebrow-line { width: 36px; height: 2px; background: var(--amber); }
+    .section-eyebrow span {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--navy); }
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 70px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--navy-mid);
+      padding: 50px 40px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.4s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .service-card.visible {
+      animation: fadeUp 0.7s forwards;
+    }
+    .service-card:nth-child(2) { animation-delay: 0.15s !important; }
+    .service-card:nth-child(3) { animation-delay: 0.3s !important; }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-6px); }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(232,146,10,0.1);
+      border: 1px solid rgba(232,146,10,0.2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: rgba(232,146,10,0.18); }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--amber); fill: none; stroke-width: 1.8; }
+    .service-num {
+      position: absolute;
+      top: 40px; right: 40px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .service-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 14px; }
+    .service-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+
+    /* ─── WHY US ─── */
+    #why { background: var(--navy-mid); }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .why-visual {
+      position: relative;
+      height: 480px;
+    }
+    .why-visual-main {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .why-visual-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .why-visual-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(6,17,31,0.25) 0%, rgba(6,17,31,0.1) 100%);
+    }
+    .why-visual-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+    .why-visual-badge .big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .why-visual-badge .small {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .why-visual-corner {
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      width: 80px;
+      height: 80px;
+      border-top: 3px solid var(--amber);
+      border-left: 3px solid var(--amber);
+    }
+    .why-placeholder-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.15);
+      text-align: center;
+    }
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    .why-item.visible {
+      animation: fadeLeft 0.6s forwards;
+    }
+    .why-item:nth-child(2) { animation-delay: 0.1s !important; }
+    .why-item:nth-child(3) { animation-delay: 0.2s !important; }
+    .why-item:nth-child(4) { animation-delay: 0.3s !important; }
+    .why-check {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: rgba(232,146,10,0.12);
+      border: 1px solid rgba(232,146,10,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .why-check svg { width: 16px; height: 16px; stroke: var(--amber); fill: none; stroke-width: 2.5; }
+    .why-item-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .why-item-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--navy); }
+    .process-header { margin-bottom: 80px; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber) 0%, rgba(232,146,10,0.2) 100%);
+      z-index: 0;
+    }
+    .process-step {
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .process-step.visible { animation: fadeUp 0.6s forwards; }
+    .process-step:nth-child(2) { animation-delay: 0.15s !important; }
+    .process-step:nth-child(3) { animation-delay: 0.3s !important; }
+    .process-step:nth-child(4) { animation-delay: 0.45s !important; }
+    .step-num {
+      width: 72px;
+      height: 72px;
+      background: var(--navy-mid);
+      border: 2px solid var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--amber);
+    }
+    .step-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 0.87rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ─── COVERAGE ─── */
+    #coverage {
+      background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .coverage-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(8rem, 18vw, 18rem);
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+    .coverage-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .coverage-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .coverage-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--off-white);
+      font-weight: 400;
+    }
+    .coverage-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .coverage-map-placeholder {
+      height: 380px;
+      background: var(--navy-light);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+    .coverage-map-placeholder svg {
+      width: 55%;
+      height: 55%;
+      opacity: 0.1;
+    }
+    .coverage-map-placeholder .map-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.2);
+      position: absolute;
+      bottom: 20px;
+    }
+    .coverage-map-placeholder .ak-dot {
+      position: absolute;
+      top: 44%;
+      left: 38%;
+      width: 12px;
+      height: 12px;
+    }
+    .coverage-map-placeholder .ak-dot::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--amber);
+      border-radius: 50%;
+    }
+    .coverage-map-placeholder .ak-dot::after {
+      content: '';
+      position: absolute;
+      top: -6px; left: -6px;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--amber);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── CTA BANNER ─── */
+    #cta {
+      background: linear-gradient(135deg, var(--steel) 0%, var(--navy-mid) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 90px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg-line {
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 200%;
+      height: 400%;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 30px,
+          rgba(255,255,255,0.012) 30px,
+          rgba(255,255,255,0.012) 31px
+        );
+      pointer-events: none;
+    }
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-left .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .cta-left .cta-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 420px;
+    }
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+    .cta-phone {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 0.06em;
+      color: var(--amber-light);
+    }
+    .cta-phone a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .cta-phone a:hover { color: var(--white); }
+    .cta-avail {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #04090f;
+      padding: 60px 60px 36px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+    .footer-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .footer-brand-desc {
+      font-size: 0.87rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 300px;
+    }
+    .footer-col-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.87rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber-light); }
+    .footer-contact-item {
+      font-size: 0.87rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .footer-contact-item strong {
+      color: var(--off-white);
+      font-weight: 500;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(107,130,153,0.5);
+      letter-spacing: 0.05em;
+    }
+    .footer-lic {
+      font-size: 0.75rem;
+      color: rgba(107,130,153,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes scrollDot {
+      0%   { transform: translateX(-50%) translateY(0); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(12px); opacity: 0; }
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-text">
+        <span class="nav-brand-top">Northern Pacific</span>
+        <span class="nav-brand-sub">Specialty Construction</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="tel:9072523874" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-accent-line"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Alaska's Roofing Specialists</span>
+      </div>
+      <h1 class="hero-title">
+        Built Tough.<br>
+        <span class="accent">Built Right.</span><br>
+        Built to Last.
+      </h1>
+      <p class="hero-subtitle">Roofing &amp; Construction · Alaska</p>
+      <p class="hero-desc">Northern Pacific Specialty Construction delivers premium roofing solutions engineered for Alaska's extreme conditions. From installation to storm damage recovery — we protect what matters most.</p>
+      <div class="hero-actions">
+        <a href="tel:9072523874" class="btn-primary">Get a Free Estimate</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+
+    <div class="hero-phone-badge">
+      <div class="label">Call Us Today</div>
+      <div class="number"><a href="tel:9072523874">(907) 252-3874</a></div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"></div>
+      <span>Scroll</span>
+    </div>
+
+    <div class="hero-roof-line">
+      <svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,180 L0,140 L120,80 L240,140 L360,60 L480,120 L600,40 L720,100 L840,30 L960,90 L1080,20 L1200,85 L1320,50 L1440,90 L1440,180 Z" fill="rgba(6,17,31,0.6)"/>
+        <path d="M0,180 L0,160 L180,110 L360,155 L540,90 L720,145 L900,80 L1080,135 L1260,95 L1440,130 L1440,180 Z" fill="rgba(6,17,31,0.8)"/>
+        <path d="M0,180 L0,180 L1440,180 L1440,165 Q1200,150 960,165 Q720,180 480,165 Q240,150 0,165 Z" fill="#06111f"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num" data-target="500">0+</div>
+        <div class="stat-label">Roofs Installed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="15">0+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Emergency Response</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Licensed &amp; Insured</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <div>
+          <div class="section-eyebrow">
+            <div class="section-eyebrow-line"></div>
+            <span>What We Do</span>
+          </div>
+          <h2 class="section-title">Roofing Services<br>Built for Alaska</h2>
+        </div>
+        <p class="section-body">Every job is executed with precision, premium materials, and a commitment to lasting quality — because up here, a failed roof isn't just inconvenient. It's dangerous.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Roof Installation -->
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="service-title">Roof Installation</h3>
+          <p class="service-desc">New construction and full replacement. We work with asphalt shingles, metal, and specialty systems designed to handle Alaska's freeze-thaw cycles, heavy snow loads, and relentless weather.</p>
+          <a href="tel:9072523874" class="service-link">
+            Get a Quote
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Roof Repair -->
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="service-title">Roof Repair</h3>
+          <p class="service-desc">Leaks, damaged flashing, deteriorated seals — we diagnose fast and fix right. No patchwork. No shortcuts. Every repair is done to full code compliance with materials that hold up season after season.</p>
+          <a href="tel:9072523874" class="service-link">
+            Get a Quote
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Storm Damage -->
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="23 7 13 17 8 12 1 19"/><polyline points="17 7 23 7 23 13"/></svg>
+          </div>
+          <h3 class="service-title">Storm Damage</h3>
+          <p class="service-desc">Alaska storms don't wait — and neither do we. We provide rapid emergency response, thorough damage documentation, and full insurance claim support. Get your property protected before the next storm hits.</p>
+          <a href="tel:9072523874" class="service-link">
+            Emergency Line
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-inner">
+      <div class="why-inner">
+
+        <div class="why-visual">
+          <div class="why-visual-main">
+            <img src="assets/roofing-contractor-at-work.jpg" alt="Northern Pacific roofing contractor at work in Alaska">
+          </div>
+          <div class="why-visual-corner"></div>
+          <div class="why-visual-badge">
+            <span class="big">AK</span>
+            <span class="small">Certified</span>
+          </div>
+        </div>
+
+        <div class="why-content">
+          <div class="section-eyebrow">
+            <div class="section-eyebrow-line"></div>
+            <span>Why Choose Us</span>
+          </div>
+          <h2 class="section-title">Alaska-Grade<br>Craftsmanship</h2>
+          <p class="section-body">Not every roofer is built for the last frontier. We are. Northern Pacific Specialty Construction was built specifically for Alaska's unique demands — from permafrost conditions to extreme wind loads.</p>
+
+          <ul class="why-list">
+            <li class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why-item-title">Alaska-Specific Expertise</div>
+                <div class="why-item-desc">We understand the unique structural demands of Alaskan climates — ice dams, heavy snow loads, extreme temperature swings, and seismic conditions.</div>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why-item-title">Licensed, Bonded &amp; Insured</div>
+                <div class="why-item-desc">Full licensing and insurance protection for your peace of mind. Every crew member is trained, verified, and accountable from day one through final inspection.</div>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why-item-title">Insurance Claim Specialists</div>
+                <div class="why-item-desc">Storm damage? We handle the entire insurance process — documentation, adjuster meetings, and claims — so you don't have to fight the bureaucracy alone.</div>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why-item-title">Transparent Pricing</div>
+                <div class="why-item-desc">Free estimates, clear scopes, no hidden fees. We tell you exactly what needs to be done and exactly what it costs — before we touch a single shingle.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="process-header">
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span>How It Works</span>
+        </div>
+        <h2 class="section-title">Simple Process.<br>Exceptional Results.</h2>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Free Inspection</h3>
+          <p class="step-desc">We come to you. A certified inspector evaluates your roof at no charge, identifies every issue, and documents everything with photos.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Detailed Estimate</h3>
+          <p class="step-desc">You get a written, itemized estimate. No vague line items. No surprises. You know exactly what you're paying for before anything starts.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Expert Execution</h3>
+          <p class="step-desc">Our crew shows up on time, works clean, and executes to spec. Premium materials, proven methods, full quality control at every stage.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Final Walkthrough</h3>
+          <p class="step-desc">We walk you through the completed work, answer every question, and leave you with full documentation and warranty information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section id="coverage">
+    <div class="coverage-bg-text">ALASKA</div>
+    <div class="section-inner coverage-inner">
+      <div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span>Service Area</span>
+        </div>
+        <h2 class="section-title">Serving<br>Alaska Communities</h2>
+        <p class="section-body">From Anchorage to the Mat-Su Valley, the Kenai Peninsula, and beyond — Northern Pacific Specialty Construction reaches the communities that need real, dependable roofing work.</p>
+
+        <ul class="coverage-list">
+          <li class="coverage-item"><div class="coverage-dot"></div>Anchorage</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Eagle River</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Wasilla</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Palmer</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Kenai</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Soldotna</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Homer</li>
+          <li class="coverage-item"><div class="coverage-dot"></div>Surrounding Areas</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="coverage-map-placeholder">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30,60 L50,40 L90,35 L130,25 L170,40 L175,70 L165,100 L150,130 L130,160 L100,170 L70,160 L45,140 L25,110 L20,80 Z" stroke="white" stroke-width="2" fill="white" opacity="0.3"/>
+            <path d="M80,100 L95,90 L115,95 L120,110 L110,125 L90,125 L80,112 Z" stroke="white" stroke-width="1.5" fill="white" opacity="0.2"/>
+          </svg>
+          <div class="ak-dot"></div>
+          <div class="map-label">ALASKA SERVICE AREA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section id="cta">
+    <div class="cta-bg-line"></div>
+    <div class="cta-inner">
+      <div class="cta-left">
+        <h2 class="cta-title">Ready to Protect<br>Your Property?</h2>
+        <p class="cta-sub">Get a free roof inspection and estimate from Alaska's roofing specialists. We respond fast — because waiting isn't an option up here.</p>
+      </div>
+      <div class="cta-right">
+        <div class="cta-phone"><a href="tel:9072523874">(907) 252-3874</a></div>
+        <div class="cta-avail">Available for emergency calls</div>
+        <a href="tel:9072523874" class="btn-primary">Schedule Free Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">Northern Pacific</div>
+          <div class="footer-brand-name" style="font-size:1rem; letter-spacing:0.18em; margin-top:-4px; margin-bottom:6px; color: var(--muted);">Specialty Construction</div>
+          <div class="footer-brand-tag">Alaska Roofing Specialists</div>
+          <p class="footer-brand-desc">Built for Alaska's toughest conditions. We deliver roofing solutions that stand up to the extremes — on every project, every time.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Roof Installation</a></li>
+            <li><a href="#services">Roof Repair</a></li>
+            <li><a href="#services">Storm Damage</a></li>
+            <li><a href="#services">Free Inspection</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-item"><strong>Phone</strong><br>(907) 252-3874</div>
+          <div class="footer-contact-item"><strong>Location</strong><br>Alaska, USA</div>
+          <div class="footer-contact-item"><strong>Emergency</strong><br>24/7 Response Available</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Northern Pacific Specialty Construction. All rights reserved.</div>
+        <div class="footer-lic">Licensed · Bonded · Insured · Alaska</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAV SCROLL ───
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ─── INTERSECTION OBSERVER (scroll-triggered animations) ───
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(
+      '.service-card, .why-item, .process-step'
+    ).forEach(el => io.observe(el));
+
+    // ─── STATS COUNTER ───
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        if (!target) return;
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + '+';
+          if (current >= target) clearInterval(timer);
+        }, 20);
+        statsObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => statsObserver.observe(el));
+
+    // ─── PARALLAX HERO ───
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const hero = document.querySelector('.hero-content');
+      const bg   = document.querySelector('.hero-bg');
+      if (hero) hero.style.transform = `translateY(${y * 0.3}px)`;
+      if (bg)   bg.style.transform   = `translateY(${y * 0.15}px)`;
+    }, { passive: true });
+
+    // ─── SMOOTH ANCHOR SCROLL ───
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
